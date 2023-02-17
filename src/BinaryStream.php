@@ -207,7 +207,9 @@ class BinaryStream
             // $value = unpack($this->types[$this->endian][$this->labels['float'][$sizeInBits]], $data);
             // return $value[1];
 
-            return $this->unpackFloat($bytes);
+            $result = $this->unpackFloat($bytes);
+
+            return $result < 0.00000001 ? 0 : $result;
         }
     }
 
